@@ -1,3 +1,10 @@
+// Paths:
+// cd C:\Program Files\MongoDB\Server\3.4\bin
+// to C:\Users\Alex Otsu\Documents\Code Projects\mongo-data
+
+
+
+
 // const MongoClient = require('mongodb').MongoClient;
 const {MongoClient, ObjectID} = require('mongodb');
 // destructuring syntax for multiple object items
