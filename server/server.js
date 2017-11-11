@@ -29,10 +29,11 @@ app.post('/todos', (req, res) => {
 
 
 
-
 app.listen(3000, () => {
   console.log('Running on Port 3000')
 });
+
+module.exports = {app};
 
 // mongoose.Promise = global.Promise;
 // // mongoose supports Promises by defualt, but have to specify which one (in case of wanting to use a special library or something)
