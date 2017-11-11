@@ -26,7 +26,16 @@ app.post('/todos', (req, res) => {
   });
 });
 
-
+app.get('/todos', (req, res) => {
+  Todo.find().then((todos) => {
+    res.send({
+      todos
+    })
+    // better to use an object containing the array instead of only the array, allows for adding custom conditions later if desired
+  }, (e) => {
+    res.status(400).send(e);
+  });
+});
 
 
 app.listen(3000, () => {

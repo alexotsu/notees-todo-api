@@ -38,9 +38,9 @@ let Todo = mongoose.model('Todo', {
 
 
 let secondTodo = new Todo({
-  text: 'Learn code',
-  completed: false,
-  completedAt: -1
+  text: 'Do something',
+  completed: true,
+  completedAt: 123
 });
 
 // secondTodo.save().then((res) => {
