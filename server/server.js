@@ -1,11 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const {ObjectID} = require('mongodb');
 
 // npm install mongoose
 // const mongoose = require('mongoose')
 let {mongoose} = require('./db/mongoose');
 let {Todo} = require('./models/todo');
 let {User} = require('./models/user');
+
 
 let app = express();
 
@@ -35,6 +37,42 @@ app.get('/todos', (req, res) => {
   }, (e) => {
     res.status(400).send(e);
   });
+});
+
+// Get /todos/id
+// url param is a colon followed by a callback, the param is wahatever is after the colon
+app.get('/todos/:id', (req, res) => {
+  // req.params returns a key:value, key is url param and value is whatever value returns from the callback
+  let id = req.params.id;
+
+  // validate ID using ObjectID.isValid
+    // respond w/ 404 if not. Send back empty body
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send({});
+  };
+  // findById using ID
+    // success
+      // if todo => send back
+      // if not => send back 404 w/ empty body
+    // error => 400 - send empty body back
+  Todo.findById(id, (e, todo) => {
+    if(!todo) {
+      return res.status(404).send('ID not found')
+    }
+    if(e) {
+      return res.status(400).send('Bad gateway')
+    }
+    return res.send({todo});
+  });
+  // Todo.findById(id).then((todo) => {
+  //   if(!todo){
+  //     res.status(404).send('Todo not found');
+  //   }
+  //   res.send(todo);
+  // }, (e) => {
+  //   res.status(400).send('ID not found')
+  // });
+
 });
 
 

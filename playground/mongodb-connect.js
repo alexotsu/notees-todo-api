@@ -1,6 +1,6 @@
 // Paths:
 // cd C:\Program Files\MongoDB\Server\3.4\bin
-// to C:\Users\Alex Otsu\Documents\Code Projects\mongo-data
+// mongo.exe --dbpath C:\Users\Alex Otsu\Documents\Code Projects\mongo-data
 
 
 

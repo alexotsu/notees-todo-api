@@ -1,4 +1,4 @@
-// mongoose configureation should live here
+// mongoose configuration should live here
 
 const mongoose = require('mongoose')
 

@@ -4,7 +4,12 @@ const {mongoose} = require('./../server/db/mongoose');
 const {Todo} = require('./../server/models/todo');
 const {User} = require('./../server/models/user');
 
-let id = '5a09a009ed35ccd4525ab424';
+
+
+
+// Working ID
+// let id = '5a09a009ed35ccd4525ab424';
+// Invalid ID
 // let id = '6a09a009ed35ccd4525ab42411';
 
 // if (!ObjectID.isValid(id)) {
@@ -34,15 +39,15 @@ let id = '5a09a009ed35ccd4525ab424';
 //   console.log('Todo by ID', todo);
 // }).catch((e) => console.log(e));
 
-// User.findById: query works, but no user || user found || handle any errors
-User.findById('5a05b312d74e87442a003588').then((user) => {
-  if(!user) {
-    return console.log('User not found');
-  }
-  return console.log(`User's email is ${user.email}`);
-}, (e) => {
-  console.log(e);
-});
-// }).catch((e) => {
-//   console.log(`Error was ${e}`);
+// // User.findById: query works, but no user || user found || handle any errors
+// User.findById('5a05b312d74e87442a003588').then((user) => {
+//   if(!user) {
+//     return console.log('User not found');
+//   }
+//   return console.log(`User's email is ${user.email}`);
+// }, (e) => {
+//   console.log(e);
 // });
+// // }).catch((e) => {
+// //   console.log(`Error was ${e}`);
+// // });
