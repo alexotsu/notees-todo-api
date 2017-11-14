@@ -10,6 +10,8 @@ let {User} = require('./models/user');
 
 
 let app = express();
+// process.env.PORT is heroku specific
+const port = process.env.PORT || 3000;
 
 
 app.use(bodyParser.json());
@@ -76,8 +78,8 @@ app.get('/todos/:id', (req, res) => {
 });
 
 
-app.listen(3000, () => {
-  console.log('Running on Port 3000')
+app.listen(port, () => {
+  console.log(`Running on Port ${port}`)
 });
 
 module.exports = {app};
@@ -157,3 +159,20 @@ module.exports = {app};
 // }, (e) => {
 //   console.log('error ', e)
 // });
+
+
+
+
+
+
+
+/*
+
+after setting port to 'process.env.port', need to load the start script (in package.json.scripts). This is the same as what is put into command line => node server/server.js
+Also need to add "engines": {"node": "version"} to tell Heroku to run with that
+
+
+In command line, use **heroku create** to make a new heroku project
+Add mLab on with **heroku addons:create mongolab:sandbox** to configure mLab w/ application
+**heroku config** shows list of all configuration variables w/ application
+*/
