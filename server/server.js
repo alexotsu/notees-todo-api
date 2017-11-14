@@ -48,7 +48,7 @@ app.get('/todos/:id', (req, res) => {
   // validate ID using ObjectID.isValid
     // respond w/ 404 if not. Send back empty body
   if (!ObjectID.isValid(id)) {
-    return res.status(404).send({});
+    return res.status(404).send();
   };
   // findById using ID
     // success
@@ -57,10 +57,10 @@ app.get('/todos/:id', (req, res) => {
     // error => 400 - send empty body back
   Todo.findById(id, (e, todo) => {
     if(!todo) {
-      return res.status(404).send('ID not found')
+      return res.status(404).send()
     }
     if(e) {
-      return res.status(400).send('Bad gateway')
+      return res.status(400).send()
     }
     return res.send({todo});
   });
